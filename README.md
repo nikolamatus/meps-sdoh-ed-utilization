@@ -1,4 +1,4 @@
-# meps-sdoh-ed-utilization
+# Social Determinants of Health and Emergency Department Utilization: A Pre-Registered Feasibility Study
 
 Predictive feasibility study: does the 2021 MEPS Social Determinants of
 Health (SDOH) / Social and Health Experiences (SHE) instrument add
