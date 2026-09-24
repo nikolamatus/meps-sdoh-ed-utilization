@@ -1,0 +1,33 @@
+# Raw MEPS microdata — obtain from AHRQ; do not redistribute
+data/raw/*
+!data/raw/.gitkeep
+
+# Pipeline outputs (regenerated locally)
+outputs/*
+!outputs/.gitkeep
+
+# Secrets and local environments
+.env
+.env.*
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.idea/
+.vscode/
+.cursor/
+.cursorrules
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Local scratch notes (never commit)
+scratch/
+*.scratch.md
+NOTES.local.md
