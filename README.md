@@ -12,9 +12,13 @@ as a sixth predictor block. It does **not** redistribute AHRQ microdata.
 
 ## Status
 
-**Dual-cohort analysis complete — decision gate YELLOW.** See
-`docs/results.md`. Raw MEPS files stay local under `data/raw/` and are
-not redistributed.
+**Inconclusive — underpowered.** See `docs/results_amendment_2.md` and
+`docs/limitations.md`. Raw MEPS files stay local under `data/raw/` and
+are not redistributed.
+
+This project does **not** carry a GREEN / YELLOW / RED decision-gate
+label after amendment 2: those labels require a completed gate on an
+adequately powered specification.
 
 ## Quick start (after data are placed)
 
@@ -34,7 +38,9 @@ python -m feasibility.run       # fails closed if data/raw is empty
 | `docs/linkage_feasibility.md` | Task 1: can SDOH join the Panel 24 cohort? |
 | `docs/pre_registration.md` | Locked analysis plan (before any model fit) |
 | `docs/methodology.md` | Methods narrative |
-| `docs/results.md` | Computed dual-cohort results and gate |
+| `docs/results.md` | Early dual-cohort run (superseded for SDOH inference) |
+| `docs/results_amendment_2.md` | Amendment-2 stop / underpowered conclusion |
+| `docs/pre_registration_amendment_2.md` | SDOH composite measurement lock |
 | `docs/limitations.md` | Scope and interpretation limits |
 
 ## Citation

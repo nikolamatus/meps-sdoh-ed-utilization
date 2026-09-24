@@ -1,82 +1,107 @@
 # Limitations
 
-These limitations apply to the completed dual-cohort analysis
-(N = 3,601; gate **YELLOW**). State them whenever results are described.
+These limitations apply to work in this repository on the MEPS Panel 24
+SDOH-restricted dual cohort (N = 3,601; 580 events). State them whenever
+results or status are described.
 
-This study **demonstrates** unweighted predictive discrimination on a
-MEPS Panel 24 **adult SDOH-respondent** analytic sample under a locked
-design. It **does not** establish that SDOH adds incremental value in
-that sample under the pre-registered six-block specification. It
-**leaves unknown** whether a different, prospectively locked SDOH subset,
-another panel, or weighted estimation would change that conclusion.
+**Project status after amendment 2:** inconclusive — underpowered (see
+`docs/results_amendment_2.md`). The research question whether SDOH adds
+predictive value beyond the five-block model **remains open**. An early
+YELLOW call on the raw 48-item six-block specification is **superseded**
+as a substantive SDOH conclusion (overparameterization, not a well-powered
+null).
 
 ---
 
-## 1. SDOH eligibility and adult-only scope
+## 1. Sample size / EPV ceiling
+
+Named separately from adult-only eligibility and from causal /
+representativeness limits.
+
+On the dual cohort, mean CV training events are **348**. Design-matrix
+widths and events-per-variable (EPV = 348 / columns), same method as
+`docs/dimensionality_diagnostic.md` and `docs/epv_amendment_2.md`:
+
+| Specification | Design columns | EPV |
+|---|---:|---:|
+| Five-block (no SDOH) | 49 | 7.102 |
+| Six-block, 7 SDOH composites | 56 | 6.214 |
+| Six-block, 48 raw SDOH items | 232 | 1.500 |
+
+The pre-registered amendment-2 floor was EPV ≥ 10. **None** of these
+specifications clear it — including the five-block model without SDOH.
+That is a cohort events ceiling, not an artifact of one SDOH encoding.
+
+**Arithmetic only (not a recommendation to re-run):** at the amended
+six-block width of **56** columns, EPV 10 requires
+\(10 \times 56 = 560\) training-fold events. Clearing EPV 10 with fewer
+columns would require proportionally fewer events (e.g. 40 columns → 400
+events). This repository does not treat those figures as a mandate to
+collect or pool more data.
+
+## 2. SDOH eligibility and adult-only scope
 
 SDOH / SHE was fielded to adults 18+ with a single 2021 administration.
 Requiring `SDOHELIG5 == 1` drops children and SDOH non-respondents who
 remain in the companion all-age cohort (5,108 → 3,601). Findings do not
 transport to pediatric ED prediction.
 
-## 2. Single cross-section SDOH
+## 3. Single cross-section SDOH
 
 SDOH predictors are one 2021 snapshot (Panel 24 Round 5), not a
 multi-year SDOH panel. Change in social risk over 2019–2021 is unmeasured.
 
-## 3. Self-report and proxy response
+## 4. Self-report and proxy response
 
 SHE items are self-administered (paper/web); proxy completion is possible
 (`SDPROX5`). Measurement error can attenuate predictive associations.
 
-## 4. Large sparse SDOH block
+## 5. SDOH dimensionality / overparameterization (historical raw block)
 
-The locked primary SDOH block includes 48 categorical items. With N ≈
-2,700 training persons and L2 logistic regression at fixed `C=1.0`, the
-block can add noise relative to a tighter specification. This run does
-**not** authorize post-hoc item hunting; any reduced SDOH set would need
-a dated pre-registration amendment **before** fitting.
+The original primary SDOH block used 48 categorical items (232
+design-matrix columns after one-hot). That specification is superseded
+for substantive inference. Composite reduction (7 domain counts) improved
+EPV but still did not clear the floor of 10.
 
-## 5. Unweighted metrics
+## 6. Unweighted metrics
 
-ROC-AUC, PR-AUC, and Brier are unweighted person-level scores on the
-analytic sample. `LONGWT` / `SDOHWT21F` were recorded for provenance and
-not applied. Results are not national MEPS estimates.
+Where models were fit, ROC-AUC, PR-AUC, and Brier are unweighted
+person-level scores on the analytic sample. `LONGWT` / `SDOHWT21F` were
+recorded for provenance and not applied. Results are not national MEPS
+estimates.
 
-## 6. Public-use MEPS coverage
+## 7. Public-use MEPS coverage
 
 MEPS-HC covers the U.S. civilian noninstitutionalized population. It
 excludes incarcerated, active-duty military, and institutionalized
 populations and undersamples people experiencing homelessness. Panel 24
 overlaps COVID-19; AHRQ documents related data-quality concerns.
 
-## 7. Single-panel, no external validation
+## 8. Single-panel, no external validation
 
-All modeling uses Panel 24 only. The 25% holdout is first-run internal
+Analyses use Panel 24 only. A 25% holdout is first-run internal
 evaluation, not an independent population or later panel.
 
-## 8. Model class and fixed hyperparameters
+## 9. Model class and fixed hyperparameters
 
-L2-regularized logistic regression with fixed `C=1.0`. No post-lock
-hyperparameter search. Incremental discrimination is specific to this
-estimator and the locked feature set.
+Where fit: L2-regularized logistic regression with fixed `C=1.0`. No
+post-lock hyperparameter search.
 
-## 9. Imputation
+## 10. Imputation
 
 Negatives → missing; single median/mode imputation inside training
-folds. Not multiple imputation.
+folds. Not multiple imputation. Ambiguous SDOH collapse codes are
+treated as missing in amendment-2 composites.
 
-## 10. No causal or clinical claims
+## 11. No causal or clinical claims
 
 No causal interpretation of coefficients, no clinical utility, no
 “avoidable/preventable” ED use, and no deployment readiness are
 supported by this analysis.
 
-## 11. Gate YELLOW is not a soft GREEN
+## 12. Superseded raw-item Six-vs-Five contrast
 
-The pre-registered incremental ROC lift for the **six-block** full model
-vs ED-history failed on the locked holdout (Δ ROC = −0.002; need ≥
-0.02). Continuity evidence that the five-block model looks better than
-ED-history on this adult subset does **not** rescue the SDOH-extension
-gate, because the registered full model includes SDOH and SDOH’s
-marginal contribution was negative.
+The raw 48-item Six-vs-Five negative heldout/CV pattern must **not** be
+cited as evidence that SDOH is unhelpful. It is evidence of
+overparameterization relative to available events. The question whether
+SDOH adds value on this design remains **unanswered** at adequate power.
