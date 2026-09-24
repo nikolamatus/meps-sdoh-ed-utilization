@@ -5,8 +5,10 @@ Implementation lives under `feasibility/`. This is a **predictive
 research analysis**, not a clinical tool, causal study, or national
 risk calculator.
 
-Until user-supplied MEPS files are present, this document describes the
-**locked design**. It does not contain fitted results.
+User-supplied HC-245 / HC-233 files were analyzed. The project’s final
+status is **inconclusive — underpowered** (see
+`docs/results_amendment_2.md` and `docs/limitations.md`). This document
+describes the locked methods design; it is not the archival verdict.
 
 ---
 

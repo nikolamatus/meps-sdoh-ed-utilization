@@ -1,8 +1,14 @@
 # Results
 
+> **Archival note:** This file records the early raw 48-item six-block
+> run and its YELLOW gate. For the project’s final status
+> (**inconclusive — underpowered**), see `docs/results_amendment_2.md`
+> and `docs/limitations.md`. The Six-vs-Five negative finding below is
+> **superseded** as substantive SDOH evidence (overparameterization).
+
 **Analysis date:** 2026-09-23 (local) / 2026-09-24 UTC run stamps  
 **Pre-registration:** `docs/pre_registration.md` (2026-09-23)  
-**Decision gate:** **YELLOW**
+**Decision gate (this run only):** **YELLOW**
 
 This file reports computed numbers only. It does not invent statistics.
 

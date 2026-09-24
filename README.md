@@ -56,7 +56,9 @@ python -m feasibility.run       # fails closed if data/raw is empty
 | `docs/methodology.md` | Methods narrative |
 | `docs/results.md` | Early dual-cohort run (superseded for SDOH inference) |
 | `docs/results_amendment_2.md` | Amendment-2 stop / underpowered conclusion |
-| `docs/pre_registration_amendment_2.md` | SDOH composite measurement lock |
+| `docs/pre_registration_amendment_2.md` | SDOH composite definitions (modeling not authorized) |
+| `docs/dimensionality_diagnostic.md` | Design-matrix width and EPV (48-item block) |
+| `docs/epv_amendment_2.md` | EPV after seven composites (floor fail) |
 | `docs/limitations.md` | Scope and interpretation limits |
 
 ## Citation
