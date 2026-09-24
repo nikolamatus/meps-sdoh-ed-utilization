@@ -1,12 +1,14 @@
 # Limitations
 
-These limitations apply regardless of any future decision-gate status.
-State them whenever results from this repository are described.
+These limitations apply to the completed dual-cohort analysis
+(N = 3,601; gate **YELLOW**). State them whenever results are described.
 
-This study, once run on real files, will **demonstrate** unweighted
-predictive discrimination on a MEPS Panel 24 **adult SDOH-respondent**
-analytic sample. It will **not** establish causality, clinical utility,
-avoidability of ED visits, or nationally representative performance.
+This study **demonstrates** unweighted predictive discrimination on a
+MEPS Panel 24 **adult SDOH-respondent** analytic sample under a locked
+design. It **does not** establish that SDOH adds incremental value in
+that sample under the pre-registered six-block specification. It
+**leaves unknown** whether a different, prospectively locked SDOH subset,
+another panel, or weighted estimation would change that conclusion.
 
 ---
 
@@ -14,58 +16,67 @@ avoidability of ED visits, or nationally representative performance.
 
 SDOH / SHE was fielded to adults 18+ with a single 2021 administration.
 Requiring `SDOHELIG5 == 1` drops children and SDOH non-respondents who
-remain in the companion all-age cohort. Findings do not transport to
-pediatric ED prediction.
+remain in the companion all-age cohort (5,108 → 3,601). Findings do not
+transport to pediatric ED prediction.
 
 ## 2. Single cross-section SDOH
 
 SDOH predictors are one 2021 snapshot (Panel 24 Round 5), not a
 multi-year SDOH panel. Change in social risk over 2019–2021 is unmeasured.
 
-## 3. Optional HC-233 join
+## 3. Self-report and proxy response
 
-Primary analysis uses HC-245 `SD*5` columns. If HC-233 is absent,
-`SDOHWT21F` is unavailable; the design already does not apply survey
-weights to sklearn metrics.
+SHE items are self-administered (paper/web); proxy completion is possible
+(`SDPROX5`). Measurement error can attenuate predictive associations.
 
-## 4. Unweighted metrics
+## 4. Large sparse SDOH block
+
+The locked primary SDOH block includes 48 categorical items. With N ≈
+2,700 training persons and L2 logistic regression at fixed `C=1.0`, the
+block can add noise relative to a tighter specification. This run does
+**not** authorize post-hoc item hunting; any reduced SDOH set would need
+a dated pre-registration amendment **before** fitting.
+
+## 5. Unweighted metrics
 
 ROC-AUC, PR-AUC, and Brier are unweighted person-level scores on the
-analytic sample, not survey-weighted national estimates.
+analytic sample. `LONGWT` / `SDOHWT21F` were recorded for provenance and
+not applied. Results are not national MEPS estimates.
 
-## 5. Public-use MEPS coverage
+## 6. Public-use MEPS coverage
 
 MEPS-HC covers the U.S. civilian noninstitutionalized population. It
 excludes incarcerated, active-duty military, and institutionalized
 populations and undersamples people experiencing homelessness. Panel 24
 overlaps COVID-19; AHRQ documents related data-quality concerns.
 
-## 6. Single-panel, no external validation
+## 7. Single-panel, no external validation
 
-All planned modeling uses Panel 24 only. No claims file, EHR extract,
-or later MEPS panel is used as an external or temporal test set.
+All modeling uses Panel 24 only. The 25% holdout is first-run internal
+evaluation, not an independent population or later panel.
 
-## 7. Model class and fixed hyperparameters
+## 8. Model class and fixed hyperparameters
 
 L2-regularized logistic regression with fixed `C=1.0`. No post-lock
 hyperparameter search. Incremental discrimination is specific to this
-estimator.
+estimator and the locked feature set.
 
-## 8. Imputation
+## 9. Imputation
 
 Negatives → missing; single median/mode imputation inside training
 folds. Not multiple imputation.
 
-## 9. Discrimination battery and other SHE items
+## 10. No causal or clinical claims
 
-Discrimination, exercise, stress, e-nicotine, life satisfaction, and
-`SDMEDCARE5` / `SDPARKS5` are excluded from the primary SDOH block by
-pre-registration. That is a design choice, not evidence those domains
-lack association with ED use.
+No causal interpretation of coefficients, no clinical utility, no
+“avoidable/preventable” ED use, and no deployment readiness are
+supported by this analysis.
 
-## 10. No fabricated results
+## 11. Gate YELLOW is not a soft GREEN
 
-Until user-supplied files are analyzed, this repository contains **no
-empirical performance numbers**. Do not treat documentation codebook
-frequencies (e.g. 3,640 SDOH-positive persons on HC-245) as pipeline
-outputs for the dual analytic cohort.
+The pre-registered incremental ROC lift for the **six-block** full model
+vs ED-history failed on the locked holdout (Δ ROC = −0.002; need ≥
+0.02). Continuity evidence that the five-block model looks better than
+ED-history on this adult subset does **not** rescue the SDOH-extension
+gate, because the registered full model includes SDOH and SDOH’s
+marginal contribution was negative.

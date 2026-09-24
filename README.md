@@ -12,9 +12,9 @@ as a sixth predictor block. It does **not** redistribute AHRQ microdata.
 
 ## Status
 
-**Scaffold + feasibility memo + pre-registration.** Modeling against
-real MEPS files has not been run. Place `h245.dta` (required) under
-`data/raw/` when ready; see `docs/data_sources.md`.
+**Dual-cohort analysis complete — decision gate YELLOW.** See
+`docs/results.md`. Raw MEPS files stay local under `data/raw/` and are
+not redistributed.
 
 ## Quick start (after data are placed)
 
@@ -34,6 +34,7 @@ python -m feasibility.run       # fails closed if data/raw is empty
 | `docs/linkage_feasibility.md` | Task 1: can SDOH join the Panel 24 cohort? |
 | `docs/pre_registration.md` | Locked analysis plan (before any model fit) |
 | `docs/methodology.md` | Methods narrative |
+| `docs/results.md` | Computed dual-cohort results and gate |
 | `docs/limitations.md` | Scope and interpretation limits |
 
 ## Citation
