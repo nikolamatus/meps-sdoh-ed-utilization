@@ -20,6 +20,22 @@ This project does **not** carry a GREEN / YELLOW / RED decision-gate
 label after amendment 2: those labels require a completed gate on an
 adequately powered specification.
 
+## Future Work / Reopening This Question
+
+This project could not determine whether SDOH adds predictive value
+beyond the five-block model, because of a sample-size / EPV ceiling on
+the dual cohort. See `docs/limitations.md` (section on sample size /
+EPV ceiling) for the arithmetic already recorded there on what training
+event count would clear EPV 10 at the amended column width — not
+re-derived here.
+
+Two concrete paths to reopen the question later:
+
+1. A future MEPS panel with a larger SDOH-eligible analytic cohort.
+2. Pooling multiple panels’ SDOH / SHE waves **if** AHRQ releases them,
+   once that is confirmed against actual future AHRQ documentation (not
+   guessed).
+
 ## Quick start (after data are placed)
 
 ```bash
